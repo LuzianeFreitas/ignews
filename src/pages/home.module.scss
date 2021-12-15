@@ -14,6 +14,10 @@
 
     > span {
         font-size: 1.5rem;
+    }
+    
+    span + span{
+        font-size: 1.5rem;
         font-weight: bold;
     }
 
@@ -37,5 +41,9 @@
             color: var(--cyan-500);
             font-weight: bold;
         }
+    }
+
+    button {
+        margin-top: 2.5rem;
     }
 }
