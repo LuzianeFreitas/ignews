@@ -27,19 +27,19 @@ export default NextAuth({
             q.Not(
               q.Exists(
                 q.Match(
-                  q.Index('user_by_email'),
-                  q.Casefold(email)
+                  q.Index('userByEmail'),
+                  q.Casefold(user.email)
                 )
               )
             ),
             q.Create(
               q.Collection('users'),
-              { data:{ email } }
+              {data: { email }}
             ),
             q.Get(
               q.Match(
-                q.Index('user_by_email'),
-                q.Casefold(email)
+                q.Index('userByEmail'),
+                q.Casefold(user.email)
               )
             )
           )
@@ -51,5 +51,5 @@ export default NextAuth({
         return false
       } 
     },
-  }
+  },
 })
