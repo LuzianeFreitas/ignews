@@ -9,8 +9,8 @@ interface SubscribeButtonProps {
     priceId: string;
 }
 export function SubscribeButton({priceId}: SubscribeButtonProps) {
-    const [session] = useSession();
-    console.log(session);
+    const {data:session} = useSession();
+    // console.log(session);
     
     async function handleSubscribe() {
         // verifica se o usuário esta logado para poder inscrever
@@ -26,7 +26,7 @@ export function SubscribeButton({priceId}: SubscribeButtonProps) {
 
             const stripe = await getStripeJs()
             
-            await stripe.redirectToCheckout(sessionId)
+            await stripe.redirectToCheckout({sessionId})
         } catch (err) {
             alert(err.message)
         }

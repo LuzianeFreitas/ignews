@@ -22,7 +22,7 @@ export default NextAuth({
       
       
       try {
-        console.log(email);
+
         await fauna.query(
           q.If(
             q.Not(
