@@ -1,0 +1,20 @@
+.container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.posts {
+    max-width: 720px;
+    margin: 5rem auto 0;
+
+    a {
+        display: block;
+
+        & + a {
+           margin-top: 2rem;
+           padding-top: 2rem; 
+           border-top: 1px solid var(--gray-700);
+        }
+    }
+}
