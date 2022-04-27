@@ -8,37 +8,37 @@ import styles from "./post.module.scss";
 
 interface PostProps {
     post: {
-      slug: string;
-      title: string;
-      content: string;
-      updatedAt: string; 
-    } 
+        slug: string;
+        title: string;
+        content: string;
+        updatedAt: string;
+    }
 }
 
 export default function Post({ post }: PostProps) {
     return (
         <>
-          <Head>
-              <title>{post.title} | Ignews</title>
+            <Head>
+                <title>{post.title} | Ignews</title>
+            </Head>
+            <main className={styles.container}>
+                <article className={styles.post}>
+                    <h1>{post.title}</h1>
+                    <time>{post.updatedAt}</time>
+                    <div
+                        className={styles.postContent}
+                        dangerouslySetInnerHTML={{ __html: post.content }}
+                    />
+                </article>
+            </main>
+            
 
-              <main className={styles.container}>
-                    <article className={styles.post}>
-                        <h1>{post.title}</h1>
-                        <time>{post.updatedAt}</time>
-                        <div    
-                            className={styles.postContent}
-                            dangerouslySetInnerHTML={{__html: post.content}}
-                        />
-                    </article>
-              </main>
-          </Head>
-    
         </>
     );
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-    const session = await getSession({req});
+    const session = await getSession({ req });
     const { slug } = params;
 
     // if(!session) {
